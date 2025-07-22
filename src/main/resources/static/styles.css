@@ -1,0 +1,363 @@
+html, body {
+    font-family: 'Nunito', sans-serif;
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+}
+
+.search-container {
+    display: flex;
+    gap: 10px;
+    z-index: 100;
+    margin: 20px auto;
+    justify-content: center;
+    width: 90%;
+    max-width: 1200px;
+}
+
+.search-container input {
+    padding: 8px 15px;
+    border: 2px solid #34495e;
+    border-radius: 20px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.search-container button {
+    background: #34495e;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    min-width: 35px;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+}
+
+/* -------Sidebar styling------- */
+.sidebar {
+    background: linear-gradient(135deg, #34495e, #2c3e50);
+    color: white;
+    width: 250px;
+    height: 100%;
+    min-height: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+    position: sticky;
+    top: 0;
+    box-shadow: 2px 0 15px rgba(0,0,0,0.1);
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-image {
+    width: 40px;
+    height: auto;
+}
+
+.sidebar h1 {
+    margin: 0;
+    font-size: 1.5em; 
+}
+
+.sidebar h3{
+    border-bottom: 2px solid #FFE100;
+}
+
+.sidebar > p {
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.col-item {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    cursor: pointer;
+}
+
+/* -------Main content area------- */
+.content {
+    padding: 30px;
+    overflow-x: hidden;
+    flex-grow: 1;
+    background-image: radial-gradient(white ,90%,rgb(243, 243, 202));
+}
+
+/* -------Progress buttons------- */
+.progress-bar {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 20px;
+}
+
+.progress-bar .circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #000000;
+    border-radius: 55px;
+    width: 160px;
+    height: 80px;
+    font-size: 14px;
+    color: #000000;
+    background-color: white;
+    margin: 20px;
+    padding: 20px;
+    text-align: center;
+    transform-origin: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease;
+}
+
+.progress-bar .circle:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+/*-------line-------*/
+hr {
+    margin: 20px;
+}
+
+/*-------book list-------*/
+.book-list {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding:0px;
+}
+
+.book-item {
+    background-color: white;
+    display: flex;
+    width: 100%; 
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.book-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+}
+
+.book-item img {
+    max-width: 100%;
+    border-radius: 5px;
+    height: 250px;
+    width: 175px;
+    padding: 10px;
+    border-radius: 25px ;
+    justify-self: center;
+    align-self: center;
+}
+
+.book-item .details {
+    display: flex;
+    flex-direction: column;
+    padding: 0px 30px;
+    border-right: 2px;    
+    border-image: radial-gradient(rgb(121, 121, 121),rgb(197, 197, 197,0));
+    border-image-slice: 0 5 0 0;
+    border-image-width: 2px;
+    justify-items: center;
+    align-items: center;
+}
+
+.book-item .synopsis {
+    text-align: center;
+    width: 500px;
+    flex-grow: 1;
+}
+
+.book-item .details h2 {
+    font-size: 1.2em;
+    margin: 0;
+}
+
+.book-item .details p {
+    margin: 5px 0;
+}
+
+.book-item .status {
+    margin-top: 10px;
+    font-weight: bold;
+    margin-top: auto;
+}
+.book-item .img-edit-btn{
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+}
+
+/* -------Button Styling-------*/
+.btn, .close-btn{
+    margin-top: 10px;
+    background-color: #aaa;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    margin: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn:hover, .close-btn:hover {
+    background-color: #d9d9d9;
+}
+
+/* -------Dialog Styling------- */
+.dialog {
+    background-image: url(RippedPaper2.png);
+    background-size: cover;
+    background-color: transparent;
+    border: none;
+    padding: 50px;
+    width:400px;
+}
+
+.dialog form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color:white;
+}
+
+#add-col{
+    flex-direction: row;
+}
+
+::backdrop {
+    backdrop-filter: blur(5px);
+}
+
+/*-------Animations-------*/
+
+.BookCardPop
+{
+    animation-name: pop;
+    animation-duration: 6ms;
+    view-timeline-name: --cardPop;
+    animation-timeline: --cardPop;
+    animation-direction: alternate;
+
+    /*I like this one but seems counter intuitive*/
+    /*animation-direction: alternate-reverse;*/
+
+    animation-iteration-count: 2;
+}
+
+@keyframes pop{
+    from{
+        scale: 100%;
+    }
+
+    to {
+        scale: 102%;
+    }
+}
+
+/* Toast Notification */
+.toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 15px 25px;
+    border-radius: 5px;
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.toast.success {
+    background-color: #4CAF50;
+}
+
+.toast.error {
+    background-color: #f44336;
+}
+
+.search-results {
+    max-height: 300px;
+    overflow-y: auto;
+    margin: 15px 0;
+    background: white;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.search-results .loading,
+.search-results .error {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+}
+
+.search-results .error {
+    color: #f44336;
+}
+
+.preview-synopsis {
+    font-size: 0.9em;
+    color: #666;
+}
+
+.search-result {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    gap: 10px;
+}
+
+.search-result img {
+    width: 50px;
+    height: 75px;
+    object-fit: cover;
+}
+
+.search-result .book-info {
+    flex: 1;
+}
+
+.search-result button {
+    padding: 5px 10px;
+    background-color: #34495e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 900px){
+    .book-item{
+        flex-direction: column;
+    }
+    .book-item .details {
+        border: none;
+    }
+
+    .book-item .synopsis{
+        width: auto;
+        padding: 30px;
+    }
+
+    .dialog {
+        width:50%;
+    }
+}

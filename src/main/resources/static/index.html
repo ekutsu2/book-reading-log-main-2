@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best Reads</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="/open-book.png">
+    <script src="scripts.js" defer></script>
+</head>
+<body>
+
+
+<!-- Sidebar -->
+<div class="sidebar">
+    <div class="header" style="display: flex; align-items: center; gap: 10px;">
+        <a href="index.html" class="logo-container" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 10px;">
+            <img class="header-image" src="/open-book.png" alt="Best Reads Logo">
+            <h1 style="margin: 0;">Best Reads</h1>
+        </a>
+    </div>
+    <p onclick="openAddBookDialog()"><i title="Add a new book" class="fas fa-plus"></i> Add Book</p>
+    <p onclick="openLogPagesDialog()"><i title="Log pages" class="fas fa-book-reader"></i> Log Pages</p>
+    <p onclick="openAddCollectionDialog()"><i title="Add a custom collection" class="fas fa-folder-plus"></i> Add Collection</p>
+    <h3>Collections</h3>
+    <div id="collectionList">
+        Collection 1
+    </div>
+</div>
+
+<!----- Add Collection Dialog ----->
+<dialog id="add-col" class="dialog">
+    <div>
+        <form>
+            <label for="collection"> Collection Name: </label>
+            <input type="text" name="collection" required />
+            <div>
+                <input type="submit" value="Submit" class="btn" />
+                <button type="button" class="close-btn" onclick="closeDialog('add-col')">Close</button>
+            </div>
+        </form>
+    </div>
+</dialog>
+
+<!----- Log Pages Dialog ----->
+<dialog id="log-pages" class="dialog">
+    <div>
+        <form id="log-pages-form" method="post">
+            <label for="pages"> Pages: </label>
+            <input type="number" name="pages" required min="1" />
+
+            <label for="date"> Date: </label>
+            <input type="date" name="date" required />
+            <div>
+                <input type="submit" value="Submit" class="btn" />
+                <button type="button" class="close-btn" onclick="closeDialog('log-pages')">Close</button>
+            </div>
+        </form>
+    </div>
+</dialog>
+
+<!------ Add Book Dialog ------>
+<dialog id="add-book" class="dialog">
+    <div>
+        <form>
+            <div class="search-box">
+                <p>Search for a book by title, author, or ISBN</p>
+                <input type="text" id="bookSearch" placeholder="Search for a book...">
+                <button type="button" onclick="searchGoogleBooks(document.getElementById('bookSearch').value)">Search</button>
+            </div>
+            <div id="searchResults" class="search-results"></div>
+            <div>
+                <button type="button" class="close-btn" onclick="closeDialog('add-book')">Close</button>
+            </div>
+        </form>
+    </div>
+</dialog>
+
+<!------ Edit Book Dialog ------>
+<dialog id="edit-book" class="dialog">
+    <div>
+        <form id="edit-book-form">
+            <label for="edit-title"> Title: </label>
+            <input type="text" id="edit-title" name="title" required/>
+            <label for="edit-author"> Author: </label>
+            <input type="text" id="edit-author" name="author" required/>
+            <label for="edit-genre"> Genre: </label>
+            <select id="edit-genre" name="genre">
+                <option value="Fiction">Fiction</option>
+                <option value="Literary Fiction">Literary Fiction</option>
+                <option value="Historical Fiction">Historical Fiction</option>
+                <option value="Science Fiction">Science Fiction</option>
+                <option value="Fantasy">Fantasy</option>
+                <option value="Mystery/Thriller">Mystery/Thriller</option>
+                <option value="Romance">Romance</option>
+                <option value="Horror">Horror</option>
+                <option value="Adventure">Adventure</option>
+                <option value="Dystopian">Dystopian</option>
+                <option value="Young Adult">Young Adult</option>
+                <option value="Young Adult Fiction">Young Adult Fiction</option>
+                <option value="Non-fiction">Non-fiction</option>
+                <option value="Biography/Autobiography">Biography/Autobiography</option>
+                <option value="Memoir">Memoir</option>
+                <option value="Self-Help">Self-Help</option>
+                <option value="True Crime">True Crime</option>
+                <option value="Travel">Travel</option>
+                <option value="Cookbooks">Cookbooks</option>
+                <option value="Health & Wellness">Health & Wellness</option>
+                <option value="Politics">Politics</option>
+                <option value="Business/Finance">Business/Finance</option>
+                <option value="Philosophy">Philosophy</option>
+                <option value="Economics">Economics</option>              
+                <option value="Poetry">Poetry</option>              
+                <option value="Graphic Novels/Comics">Graphic Novels/Comics</option>
+                <option value="Children's Books">Children's Books</option>
+                <option value="Picture Books">Picture Books</option>
+                <option value="Early Readers">Early Readers</option>
+                <option value="Middle Grade">Middle Grade</option>              
+                <option value="Classics">Classics</option>              
+                <option value="Humor">Humor</option>              
+                <option value="Historical Romance">Historical Romance</option>              
+                <option value="Thriller/Suspense">Thriller/Suspense</option>              
+                <option value="Crime/Detective Fiction">Crime/Detective Fiction</option>
+            </select>
+            <label for="edit-rating"> Rating: </label>
+            <input type="number" id="edit-rating" name="rating" max="5" min="0" step="0.1"/>
+            <fieldset style="display: flex; flex-direction: column; ">
+                <legend>Status</legend>
+                <div>
+                    <label for="edit-status"> Not Started: </label>
+                    <input type="radio" id="edit-status-not-started" name="status" value="Not Started" />
+                </div>
+                <div>
+                    <label for="edit-status"> In Progress: </label>
+                    <input type="radio" id="edit-status-in-progress" name="status" value="In Progress"/>
+                </div>
+                <div>
+                    <label for="edit-status"> Complete: </label>
+                    <input type="radio" id="edit-status-completed" name="status" value="Completed" />
+                </div>
+            </fieldset>
+            <label for="edit-synopsis"> Synopsis: </label>
+            <input type="text" id="edit-synopsis" name="synopsis" required/>
+            <label for="collection">Collection: </label>
+            <select name="collection" id="col-drop">
+            </select>
+            <label for="edit-image"> Image: </label>
+            <input type="url" id="edit-image" placeholder="https://example.com" name="image" />
+            <div>
+                <input type="submit" value="Save Changes" class="btn" />
+                <button type="button" class="close-btn" onclick="closeDialog('edit-book')">Close</button>
+            </div>
+        </form>
+    </div>
+</dialog>
+
+<!-- Main content -->
+<div class="content">
+
+    <div class="progress-bar">
+        <div class="circle" id="totalPages"></div>
+        <div class="circle">Favorite Genre</div>
+        <div class="circle" id="averagePages">Average Pages Read</div>
+        <div class="circle" id="monthlyPages"></div>
+    </div>
+
+    <!-- Search Container -->
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search books...">
+        <button onclick="searchBooks()"><i class="fas fa-search" title="Search"></i></button>
+        <button onclick="clearSearch()"><i class="fa-regular fa-circle-xmark" title="Clear"></i></button>
+    </div>
+
+    <hr>
+
+    <div class="book-list" id="bookList">
+        <!-- Books will be dynamically injected here -->
+    </div>
+</div>
+</body>
+</html>
